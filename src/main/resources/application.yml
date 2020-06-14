@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: dzl123..
+    url: jdbc:mysql://127.0.0.1:3306/mall?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mappers/*.xml
+
+logging:
+  pattern:
+    console: "[%thread] %-5level %logger{36} - %msg%n"
+server:
+  port: 8081
+business:
+  db:
+    homePage:
+      url: "https://www.douban.com"
+      logout: "https://www.douban.com/accounts/logout?source=main&ck="
+      login:
+        url: "https://accounts.douban.com/j/mobile/login/basic"
+        refer: "https://accounts.douban.com/passport/login?source=main"
+        userAgent: "Mozilla/5.0"
+        name: "phone number"
+        password: "your password"
+        remember: "false"
+    group:
+      comment: "up"
+      commentUrl: "https://www.douban.com/group/topic/your_page_id/add_comment#last"
