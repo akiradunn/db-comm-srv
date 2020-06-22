@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: dzl123..
-    url: jdbc:mysql://127.0.0.1:3306/mall?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    password: your_db_password
+    url: jdbc:mysql://127.0.0.1:3306/your_db_name?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
 
 mybatis:
   configuration:
@@ -25,9 +25,9 @@ business:
         url: "https://accounts.douban.com/j/mobile/login/basic"
         refer: "https://accounts.douban.com/passport/login?source=main"
         userAgent: "Mozilla/5.0"
-        name: "18675952912"
-        password: "doubandzl123.."
+        name: "phone number"
+        password: "your_password"
         remember: "false"
     group:
       comment: "up"
-      commentUrl: "https://www.douban.com/group/topic/180011100/add_comment#last"
+      commentUrl: "https://www.douban.com/group/topic/your_page_id/add_comment#last"
