@@ -64,6 +64,7 @@
     </dependencies>
 
     <build>
+        <finalName>db-comm-srv</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -71,14 +72,18 @@
             </plugin>
 
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
                 <configuration>
-                    <finalName>db-comm-srv</finalName>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <descriptors>
-                        <descriptor>assembly/assembly.xml</descriptor>
-                    </descriptors>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>src/main/assembly/assembly.xml</descriptors>
                 </configuration>
                 <executions>
                     <execution>
@@ -90,8 +95,42 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <!-- 表示把配置文件拷到和jar包同一个路径下 -->
+                            <outputDirectory>src/main/assembly/config</outputDirectory>
+                            <!-- 如果需要本地调试。请把此部分打开 -->
+                            <!--<outputDirectory>target/classes</outputDirectory>-->
 
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- resources下的所有文件都不打到jar中 -->
+                <excludes>
+                    <exclude>**/*.*</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 
 </project>

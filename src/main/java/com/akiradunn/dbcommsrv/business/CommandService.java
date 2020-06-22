@@ -107,11 +107,12 @@ public class CommandService {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(formData, headers);
         ResponseEntity<String> loginResponseResponseEntity = restTemplate.postForEntity(login, request, String.class);
+        log.info("登录返回值为: {}",loginResponseResponseEntity);
 
         List<String> respCookie = loginResponseResponseEntity.getHeaders().get(HttpProtocol.SETCOOKIE);
         String dbcl2 = respCookie == null ? null : respCookie.get(0);
 
-        log.info("---结束登录douban---");
+        log.info("---结束登录douban,获取dbcl2 cookie值为 {}---",dbcl2);
         return dbcl2;
     }
 
