@@ -12,6 +12,5 @@
 <br>`business.db.group.comment.commentUrl` 里面的`your_page_id`值.
 <br>`business.db.group.comment`可以设置置顶帖追加评论的内容,这里默认设置为**"up"**,评论内容可自定义.
 
-![application.yml配置](img/application.yml.png)
 `your_page_id`值的获取方式:
 ![评论页id](img/coment-page-id.png)
