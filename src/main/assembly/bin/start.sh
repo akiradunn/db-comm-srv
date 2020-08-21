@@ -104,7 +104,7 @@ done
 echo "OK!"
 PIDS=`ps -f | grep java | grep ".jar" | grep "$DEPLOY_DIR" | awk '{print $2}'`
 sleep 1
-green_echo  "------ Prog info PLS check &  dev(开发环境) kx.prod (科兴验证环境) kx.prod (科兴生产环境)  ks.prod (金山生产环境) -----"
+
 echo "PID: $PIDS"
 echo "PROG_ENV: $PROFILES_ACTIVE"
 echo "LOGS": `ls -l /proc/$PIDS/fd | grep .log | awk '{print $NF}' | sort |uniq`
