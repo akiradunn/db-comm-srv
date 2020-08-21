@@ -35,7 +35,7 @@ public class CommandService {
     private String loginPassword;
     @Value("${business.db.homePage.login.remember}")
     private String loginRemember;
-    @Value("${business.db.group.comment}")
+    @Value("${business.db.group.comment:up}")
     private String comment;
     @Value("${business.db.group.commentUrl}")
     private String commentUrl;
@@ -64,7 +64,7 @@ public class CommandService {
     /**
      * 获取bid cookie用于登录接口使用
      * @author akiradunn
-     * @time 2020/6/14 15:43
+     * @date 2020/6/14 15:43
      **/
     private String acquireBidCookie() {
         log.info("---开始获取bid cookie---");
@@ -86,7 +86,7 @@ public class CommandService {
     /**
      * 豆瓣登录接口
      * @author akiradunn
-     * @time 2020/6/14 15:57
+     * @date 2020/6/14 15:57
      **/
     private String login(String bidCookie) {
         log.info("---开始登录douban---");
@@ -119,7 +119,7 @@ public class CommandService {
     /**
      * 获取ck cookie用于评论接口
      * @author akiradunn
-     * @time 2020/6/14 16:40
+     * @date 2020/6/14 16:40
      **/
     private String acquireCkCookie(String bidCookie,String dbcl2Cookie) {
         log.info("---开始获取ck cookie---");
@@ -146,7 +146,7 @@ public class CommandService {
     /**
      * 评论追加置顶保持热度
      * @author akiradunn
-     * @time 2020/6/14 15:58
+     * @date 2020/6/14 15:58
      **/
     private void addComment(String dbcl2Cookie,String ck) {
         log.info("---开始追加评论---");
@@ -174,7 +174,7 @@ public class CommandService {
     /**
      * 注销登录
      * @author akiradunn
-     * @time 2020/6/14 16:47
+     * @date 2020/6/14 16:47
      **/
     public void logout(String ckCookie) {
         log.info("---开始退出登录---");
@@ -192,7 +192,7 @@ public class CommandService {
     /**
      * 解析cookie字符串提取出cookie键值
      * @author akiradunn
-     * @time 2020/6/14 15:56
+     * @date 2020/6/14 15:56
      **/
     private String parseCookieStr(String cookieStr) {
         log.info("---开始解析cookie str: {}---",cookieStr);
