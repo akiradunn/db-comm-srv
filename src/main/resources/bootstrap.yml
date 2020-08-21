@@ -8,6 +8,7 @@ server:
     async-conext:
       timeout: 30000
 logPath: './logs/'
+
 spring:
   application:
     name: db-comm-srv

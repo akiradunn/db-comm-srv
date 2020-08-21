@@ -59,27 +59,29 @@ LIB_DIR=$DEPLOY_DIR
 MAIN_JAR=`ls $LIB_DIR|grep .jar |awk '{print "'$LIB_DIR'/"$0}' `
 echo $MAIN_JAR
 #LIB_JARS=`ls $LIB_DIR|grep .jar|awk '{print "'$LIB_DIR'/"$0}'|tr "\n" ":"`
-JAVA_DEBUG_OPTS=""
-if [ "$1" = "debug" ]; then
-    JAVA_DEBUG_OPTS=" -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n "
-fi
-JAVA_JMX_OPTS=""
-if [ "$1" = "jmx" ]; then
-    JAVA_JMX_OPTS=" -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false "
-fi
-JAVA_MEM_OPTS=""
-BITS=`java -version 2>&1 | grep -i 64-bit`
-if [ -n "$BITS" ]; then
-    JAVA_MEM_OPTS=" -server -Xmx2g -Xms2g -Xmn256m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 "
-else
-    JAVA_MEM_OPTS=" -server -Xms1g -Xmx1g -XX:PermSize=128m -XX:SurvivorRatio=2 -XX:+UseParallelGC "
-fi
+#JAVA_DEBUG_OPTS=""
+#if [ "$1" = "debug" ]; then
+#    JAVA_DEBUG_OPTS=" -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n "
+#fi
+#JAVA_JMX_OPTS=""
+#if [ "$1" = "jmx" ]; then
+#    JAVA_JMX_OPTS=" -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false "
+#fi
+#JAVA_MEM_OPTS=""
+#BITS=`java -version 2>&1 | grep -i 64-bit`
+#if [ -n "$BITS" ]; then
+#    JAVA_MEM_OPTS=" -server -Xmx2g -Xms2g -Xmn256m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 "
+#else
+#    JAVA_MEM_OPTS=" -server -Xms1g -Xmx1g -XX:PermSize=128m -XX:SurvivorRatio=2 -XX:+UseParallelGC "
+#fi
 
 echo -e "Starting the $SERVER_NAME ...\c"
 if [ "$1" == "stdout" ]; then
-    nohup java  $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  $SENTINEL_OPTS  -Xbootclasspath/a:$CONF_DIR  -DlogPath=$LOGPATH -Dspring.profiles.active=$PROFILES_ACTIVE  -jar $MAIN_JAR >> $STDOUT_FILE 2>&1 &
+#    nohup java  $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  $SENTINEL_OPTS  -Xbootclasspath/a:$CONF_DIR  -DlogPath=$LOGPATH -Dspring.profiles.active=$PROFILES_ACTIVE  -jar $MAIN_JAR >> $STDOUT_FILE 2>&1 &
+     nohup java  -Xbootclasspath/a:$CONF_DIR  -DlogPath=$LOGPATH -Dspring.profiles.active=$PROFILES_ACTIVE  -jar $MAIN_JAR >> $STDOUT_FILE 2>&1 &
   else
-     nohup java  $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  $SENTINEL_OPTS  -Xbootclasspath/a:$CONF_DIR  -DlogPath=$LOGPATH  -Dspring.profiles.active=$PROFILES_ACTIVE  -jar $MAIN_JAR >> /dev/null 2>&1 &
+#     nohup java  $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  $SENTINEL_OPTS  -Xbootclasspath/a:$CONF_DIR  -DlogPath=$LOGPATH  -Dspring.profiles.active=$PROFILES_ACTIVE  -jar $MAIN_JAR >> /dev/null 2>&1 &
+     nohup java  -Xbootclasspath/a:$CONF_DIR  -DlogPath=$LOGPATH  -Dspring.profiles.active=$PROFILES_ACTIVE  -jar $MAIN_JAR >> /dev/null 2>&1 &
 fi
 
 COUNT=0
