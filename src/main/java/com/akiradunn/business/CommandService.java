@@ -1,7 +1,7 @@
-package com.akiradunn.dbcommsrv.business;
+package com.akiradunn.business;
 
-import com.akiradunn.dbcommsrv.common.constant.HttpProtocol;
-import com.akiradunn.dbcommsrv.common.util.AssertUtil;
+import com.akiradunn.common.constant.HttpProtocol;
+import com.akiradunn.common.util.DbAssert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,9 +14,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 /**
- * @description: 置顶小组转租贴
- * @author: akiradunn
- * @date: 2020/6/14 2:55
+ * 置顶小组转租贴
+ * @author akiradunn
+ * @since 2020/6/14 2:55
  */
 @Slf4j
 @Component
@@ -62,7 +62,7 @@ public class CommandService {
     }
 
     /**
-     * @description 获取bid cookie用于登录接口使用
+     * 获取bid cookie用于登录接口使用
      * @author akiradunn
      * @time 2020/6/14 15:43
      **/
@@ -84,7 +84,7 @@ public class CommandService {
     }
 
     /**
-     * @description 豆瓣登录接口
+     * 豆瓣登录接口
      * @author akiradunn
      * @time 2020/6/14 15:57
      **/
@@ -117,7 +117,7 @@ public class CommandService {
     }
 
     /**
-     * @description 获取ck cookie用于评论接口
+     * 获取ck cookie用于评论接口
      * @author akiradunn
      * @time 2020/6/14 16:40
      **/
@@ -144,7 +144,7 @@ public class CommandService {
     }
 
     /**
-     * @description 评论追加置顶保持热度
+     * 评论追加置顶保持热度
      * @author akiradunn
      * @time 2020/6/14 15:58
      **/
@@ -172,12 +172,12 @@ public class CommandService {
     }
 
     /**
-     * @description 注销登录
+     * 注销登录
      * @author akiradunn
      * @time 2020/6/14 16:47
      **/
     public void logout(String ckCookie) {
-        log.info("---开始注销账号---");
+        log.info("---开始退出登录---");
 
         //添加请求头
         HttpHeaders headers = new HttpHeaders();
@@ -186,18 +186,18 @@ public class CommandService {
         //组装参数
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
         ResponseEntity<String> forEntity = restTemplate.getForEntity(String.format(logout,ckCookie), String.class);
-        log.info("---结束注销账号,注销返回数据为 {}---",forEntity);
+        log.info("---结束退出登录,返回数据为 {}---",forEntity);
     }
 
     /**
-     * @description 解析cookie字符串提取出cookie键值
+     * 解析cookie字符串提取出cookie键值
      * @author akiradunn
      * @time 2020/6/14 15:56
      **/
     private String parseCookieStr(String cookieStr) {
         log.info("---开始解析cookie str: {}---",cookieStr);
 
-        AssertUtil.isTrue(cookieStr != null , "cookie为空！");
+        DbAssert.isTrue(cookieStr != null , "cookie为空！");
         String[] kvStr = cookieStr.split(";");
         String v = kvStr[0].split("=")[1];
 

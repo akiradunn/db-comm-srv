@@ -1,6 +1,6 @@
-package com.akiradunn.dbcommsrv.business;
+package com.akiradunn.business;
 
-import com.akiradunn.dbcommsrv.DbCommSrvApplicationTests;
+import com.akiradunn.DbCommSrvApplicationTests;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

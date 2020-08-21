@@ -1,4 +1,4 @@
-package com.akiradunn.dbcommsrv;
+package com.akiradunn;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

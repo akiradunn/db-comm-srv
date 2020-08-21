@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: your_db_password
-    url: jdbc:mysql://127.0.0.1:3306/your_db_name?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://your_ip:3306/your_db?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
 
 mybatis:
   configuration:
@@ -11,11 +11,6 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mappers/*.xml
 
-logging:
-  pattern:
-    console: "[%thread] %-5level %logger{36} - %msg%n"
-server:
-  port: 8081
 business:
   db:
     homePage:
@@ -25,9 +20,9 @@ business:
         url: "https://accounts.douban.com/j/mobile/login/basic"
         refer: "https://accounts.douban.com/passport/login?source=main"
         userAgent: "Mozilla/5.0"
-        name: "phone number"
+        name: "your_account"
         password: "your_password"
         remember: "false"
     group:
       comment: "up"
-      commentUrl: "https://www.douban.com/group/topic/your_page_id/add_comment#last"
+      commentUrl: "https://www.douban.com/group/topic/your_comment_id/add_comment#last"

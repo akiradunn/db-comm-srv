@@ -1,4 +1,4 @@
-package com.akiradunn.dbcommsrv;
+package com.akiradunn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

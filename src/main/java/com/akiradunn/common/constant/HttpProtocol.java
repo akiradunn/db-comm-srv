@@ -1,10 +1,9 @@
-package com.akiradunn.dbcommsrv.common.constant;
+package com.akiradunn.common.constant;
 
 /**
- * @description:
- * @projectName:db-comm-srv
- * @author:duanzengliang
- * @time:2020/6/14 17:35
+ *
+ * @author akiradunn
+ * @since 2020/6/14 17:35
  */
 public interface HttpProtocol {
     public static final String HOST = "Host";

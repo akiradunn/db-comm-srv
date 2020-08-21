@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  tomcat:
+    max-threads: 150
+    min-spare-threads: 10
+    accept-count: 500
+    max-connections: 150
+    async-conext:
+      timeout: 30000
+logPath: './logs/'
+spring:
+  application:
+    name: db-comm-srv

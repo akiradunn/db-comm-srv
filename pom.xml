@@ -109,7 +109,7 @@
                             <!-- 表示把配置文件拷到和jar包同一个路径下 -->
                             <outputDirectory>src/main/assembly/config</outputDirectory>
                             <!-- 如果需要本地调试。请把此部分打开 -->
-                            <!--<outputDirectory>target/classes</outputDirectory>-->
+<!--                            <outputDirectory>target/classes</outputDirectory>-->
 
                             <resources>
                                 <resource>

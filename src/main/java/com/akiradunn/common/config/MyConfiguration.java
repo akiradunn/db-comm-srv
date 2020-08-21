@@ -1,12 +1,12 @@
-package com.akiradunn.dbcommsrv.common.config;
+package com.akiradunn.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @description:
- * @author: akiradunn
+ *
+ * @author akiradunn
  * @date: 2020/6/14 2:54
  */
 @Configuration
